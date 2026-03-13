@@ -1,6 +1,8 @@
 # RGIS
 Registry–Gatekeeper Interface System
 
+![RGIS Version](https://img.shields.io/badge/RGIS-v1.0--draft-blue)
+
 RGIS defines the runtime interoperability protocol between **registry authorities** and **gatekeeper enforcement nodes** under the **GRC-P** governance architecture.
 
 The protocol standardizes how operational requests are evaluated against authoritative governance state before execution occurs.
