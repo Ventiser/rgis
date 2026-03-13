@@ -1,20 +1,99 @@
 # RGIS
-**Registry–Gatekeeper Interface System**
+Registry–Gatekeeper Interface System
 
 RGIS defines the runtime interoperability protocol between **registry authorities** and **gatekeeper enforcement nodes** under the **GRC-P** governance architecture.
 
-It standardizes how a gatekeeper:
+The protocol standardizes how operational requests are evaluated against authoritative governance state before execution occurs.
 
-- receives a canonical request
-- verifies identity and replay protection
-- resolves governance state from a registry authority
-- produces a deterministic **PERMIT** or **DENY** decision
-- records tamper-evident evidence
+RGIS defines:
+
+- canonical request structure
+- identity and replay validation
+- registry governance queries
+- deterministic **PERMIT / DENY** decisions
+- standardized reason codes
+- fail-closed enforcement
+- tamper-evident evidence generation
+
+---
 
 ## Role in the Stack
 
-```text
-GRC-P   → Governance architecture
-RGIS    → Runtime interoperability protocol
+
+GRC-P → Governance architecture
+RGIS → Runtime interoperability protocol
 GovenAI → Registry authority implementation
-JobQue  → Gatekeeper implementation
+JobQue → Gatekeeper implementation
+
+
+- **GRC-P** defines the governance control architecture.
+- **RGIS** defines the runtime protocol between registry and gatekeeper.
+- **GovenAI** is a registry authority implementation.
+- **JobQue** is a runtime gatekeeper implementation.
+
+---
+
+## Relationship to GRC-P
+
+RGIS operates under the **Governance Runtime Control Protocol (GRC-P)** standard.
+
+GRC-P repository:
+
+https://github.com/Ventiser/grc-p
+
+In simple terms:
+
+- **GRC-P** defines the governance architecture.
+- **RGIS** defines the runtime protocol used to enforce that architecture.
+
+---
+
+## Protocol Overview
+
+The RGIS runtime flow:
+
+
+Client Request
+↓
+Gatekeeper Intercepts Request
+↓
+Canonical Request Validation
+↓
+Registry Governance Query
+↓
+Permit / Deny Decision
+↓
+Execution Allowed or Blocked
+↓
+Evidence Event Recorded
+
+
+Gatekeepers MUST enforce **fail-closed semantics**.
+
+If governance state cannot be verified, the request MUST be denied.
+
+---
+
+## Repository Structure
+
+
+specs/ RGIS protocol specification
+schemas/ request, response, and reason code schemas
+architecture/ protocol state machine and runtime flow
+wire-format/ transport and message encoding rules
+security/ protocol security considerations
+conformance/ interoperability requirements
+diagrams/ protocol flow diagrams
+
+
+---
+
+## Status
+
+Draft publication of **RGIS v1.0**.
+
+---
+
+## Stewardship
+
+Maintained by **Ventiser**.
