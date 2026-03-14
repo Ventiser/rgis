@@ -75,6 +75,11 @@ Gatekeepers MUST enforce **fail-closed semantics**.
 If governance state cannot be verified, the request MUST be denied.
 
 ---
+## Protocol Status
+
+Version | Status
+-------|-------
+v1.0 | Draft
 
 ## Repository Structure
 
