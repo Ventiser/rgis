@@ -1,0 +1,7 @@
+A Gatekeeper MUST NOT define governance rules.
+
+A Gatekeeper MUST consult a Registry before issuing a PERMIT decision.
+
+Registries MUST maintain canonical governance evidence.
+
+Gatekeepers MUST fail closed if registry authority cannot be verified.
