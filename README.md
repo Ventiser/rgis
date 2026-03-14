@@ -19,14 +19,50 @@ RGIS defines:
 
 ---
 
-# Role in the Stack
+## Architecture Diagram
 
+```text
+            Request Originator
+(AI Agent / Application / Human Event / System Trigger)
+                     │
+                     ▼
+                   GRC-P
+    Governance Runtime Control Protocol
+            (Architecture Standard)
+                     │
+                     ▼
+                   RGIS
+   Registry–Gatekeeper Interface Protocol
+                     │
+        ┌────────────┴────────────┐
+        │                         │
+        ▼                         ▼
+  GovenAI Registry         JobQue Gatekeeper
+Authority Implementation   Enforcement Implementation
+        │                         │
+        └────────────┬────────────┘
+                     ▼
+       Governance Enforcement Boundary
+                     │
+                     ▼
+           Operational Execution
+             (APIs / Systems)
+```
 
-GRC-P → Governance architecture
-RGIS → Runtime interoperability protocol
-GovenAI Registry → Registry authority implementation
+The architecture is **domain-agnostic** and establishes a **governance enforcement boundary** in front of operational APIs and systems.
+
+Any execution surface placed behind this boundary becomes a **governed execution environment**.
+
+---
+
+## Role in the Stack
+
+```text
+GRC-P             → Governance architecture
+RGIS              → Runtime interoperability protocol
+GovenAI Registry  → Registry authority implementation
 JobQue Gatekeeper → Gatekeeper enforcement implementation
-
+```
 
 - **GRC-P** defines the governance control architecture.
 - **RGIS** defines the runtime protocol between registry and gatekeeper.
@@ -35,7 +71,7 @@ JobQue Gatekeeper → Gatekeeper enforcement implementation
 
 ---
 
-# Relationship to GRC-P
+## Relationship to GRC-P
 
 RGIS operates under the **Governance Runtime Control Protocol (GRC-P)** standard.
 
@@ -50,25 +86,25 @@ In simple terms:
 
 ---
 
-# Protocol Overview
+## Protocol Overview
 
 The RGIS runtime flow:
 
-
+```text
 Client Request
-↓
+      ↓
 Gatekeeper Intercepts Request
-↓
+      ↓
 Canonical Request Validation
-↓
+      ↓
 Registry Governance Query
-↓
+      ↓
 Permit / Deny Decision
-↓
+      ↓
 Execution Allowed or Blocked
-↓
+      ↓
 Evidence Event Recorded
-
+```
 
 Gatekeepers MUST enforce **fail-closed semantics**.
 
@@ -76,13 +112,13 @@ If governance state cannot be verified, the request **MUST be denied**.
 
 ---
 
-# Threat Model Summary
+## Threat Model Summary
 
 RGIS enforces governance decisions before operational execution occurs.
 
 The protocol protects against several classes of attack by separating **authority**, **enforcement**, and **execution**.
 
-
+```text
 Client / Actor
 │
 │ Signed Request
@@ -112,7 +148,7 @@ Execution System
 ▼
 Evidence Ledger
 (Hash-chained governance record)
-
+```
 
 ### Threats Addressed
 
@@ -128,7 +164,7 @@ If any security validation fails, the protocol **fails closed and denies executi
 
 ---
 
-# Protocol Status
+## Protocol Status
 
 | Version | Status |
 |--------|--------|
@@ -136,27 +172,27 @@ If any security validation fails, the protocol **fails closed and denies executi
 
 ---
 
-# Repository Structure
+## Repository Structure
 
-
-specs/ RGIS protocol specification
-schemas/ request, response, and reason code schemas
+```text
+specs/        RGIS protocol specification
+schemas/      request, response, and reason code schemas
 architecture/ protocol state machine and runtime flow
-wire-format/ transport and message encoding rules
-security/ protocol security considerations
-conformance/ interoperability requirements
-diagrams/ protocol flow diagrams
-
+wire-format/  transport and message encoding rules
+security/     protocol security considerations
+conformance/  interoperability requirements
+diagrams/     protocol flow diagrams
+```
 
 ---
 
-# Status
+## Status
 
 Draft publication of **RGIS v1.0**.
 
 ---
 
-# Related Repositories
+## Related Repositories
 
 GRC-P — Governance architecture  
 https://github.com/Ventiser/grc-p
@@ -172,6 +208,6 @@ https://github.com/Ventiser/jobque-gatekeeper
 
 ---
 
-# Stewardship
+## Stewardship
 
 Maintained by **Ventiser**.
