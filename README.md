@@ -96,6 +96,20 @@ Draft publication of **RGIS v1.0**.
 
 ---
 
+## Related Repositories
+
+GRC-P — Governance architecture  
+https://github.com/Ventiser/grc-p
+
+RGIS — Registry–Gatekeeper protocol  
+https://github.com/Ventiser/rgis
+
+GovenAI Registry — reference registry authority implementation  
+https://github.com/Ventiser/govenai-registry
+
+JobQue Gatekeeper — reference runtime enforcement implementation  
+https://github.com/Ventiser/jobque-gatekeeper
+
 ## Stewardship
 
 Maintained by **Ventiser**.
